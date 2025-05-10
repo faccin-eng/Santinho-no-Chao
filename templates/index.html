@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Latest Posts</h1>
+{% for post in posts %}
+<div class="post">
+    <img src="{{ post.photo_url }}" alt="Photo" width="200">
+    <p>Candidate: {{ post.candidate.name }}</p>
+    <p>Flyers: {{ post.flyer_count }}</p>
+    <p>Posted by: {{ post.user.username }}</p>
+</div>
+{% endfor %}
+
+<h1>Ranking</h1>
+<ol>
+{% for candidate, total_flyers in ranking %}
+    <li>{{ candidate.name }} - {{ total_flyers }} flyers</li>
+{% endfor %}
+</ol>
+{% endblock %}

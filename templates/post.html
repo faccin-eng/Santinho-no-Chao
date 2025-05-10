@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Make a Post</h1>
+<form method="post" enctype="multipart/form-data">
+    <label for="candidate">Candidate:</label>
+    <input type="text" id="candidate" name="candidate" list="candidates" required>
+    <datalist id="candidates">
+        {% for candidate in candidates %}
+        <option value="{{ candidate.name }}"></option>
+        {% endfor %}
+    </datalist>
+    <br>
+    <label for="flyer_count">Number of Flyers:</label>
+    <input type="number" id="flyer_count" name="flyer_count" required>
+    <br>
+    <label for="photo">Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/*" capture="camera" required>
+    <br>
+    <input type="submit" value="Post">
+</form>
+{% endblock %}
